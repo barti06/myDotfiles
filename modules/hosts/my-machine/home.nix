@@ -36,7 +36,7 @@
                     name = "barti06";
                     email = "bartipdl1@gmail.com";
                 };
-                credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
+                credential.helper = "${pkgs.gitFull}/bin/gh auth git-credential";
             };
         };
 
@@ -52,17 +52,24 @@
 	        '';
             interactiveShellInit = ''
                 set fish_greeting ""
+                set -g __fish_git_prompt_char_stateseparator ""
+                set -g __fish_git_prompt_showdirtystate 1
+                set -g __fish_git_prompt_char_dirtystate "*"
                 fastfetch
             '';
             shellAliases = {
                 ls = "eza -la --icons --group-directories-first";
                 btw = "echo i use nixos, btw";
+                nef = "cd ~/cfg && exec nvim";
+                nrs = "sudo nixos-rebuild switch --flake ~/cfg#barti-pc";
             };
             functions = {
                 fish_prompt = ''
+                set -l git (fish_git_prompt | string trim -c '() ')
                 set_color blue
-                echo (prompt_pwd)
+                echo -n (prompt_pwd)
                 set_color magenta
+                echo " $git"
                 echo -n "❯ "
                 set_color normal
                 '';
@@ -76,7 +83,7 @@
                 size = 12;
             };
             settings = {
-                background_opacity = "0.8";
+                background_opacity = "0.9";
             };
         };
     };

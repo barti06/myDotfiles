@@ -74,7 +74,7 @@
                     # applications
                     "Mod+Q".spawn-sh = lib.getExe pkgs.kitty;
                     "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
-                    "Mod+R".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+                    "Mod+R".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call controlCenter toggle";
                     "Mod+Space".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
                     
                     # screenshots
