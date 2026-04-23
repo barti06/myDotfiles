@@ -1,31 +1,30 @@
 { self, inputs, ... }: {
-    
-    flake.nixosModules.barti-pcHardware = { config, lib, pkgs, modulesPath, ... }: {
-        imports =
-            [ (modulesPath + "/installer/scan/not-detected.nix")
-            ];
+flake.nixosModules.barti-pcHardware = { config, lib, pkgs, modulesPath, ... }: {
+    imports =
+	[ (modulesPath + "/installer/scan/not-detected.nix")
+        ];
 
-        boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-        boot.initrd.kernelModules = [ ];
-        boot.kernelModules = [ "kvm-amd" ];
-        boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
-        fileSystems."/" =
-            { device = "/dev/disk/by-uuid/a1a319dc-19b4-4dcc-a936-3aba90d2baec";
-            fsType = "ext4";
-            };
-
-        fileSystems."/boot" =
-            { device = "/dev/disk/by-uuid/65DD-B295";
-            fsType = "vfat";
-            options = [ "fmask=0022" "dmask=0022" ];
-            };
-
-        swapDevices =
-            [ { device = "/dev/disk/by-uuid/8de6ddfb-b689-45c0-a52d-2c5aa50a8186"; }
-            ];
-
-        nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-        hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/4e68ffe4-d9eb-4674-ac59-59c58413c5c7";
+      fsType = "btrfs";
     };
-} 
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/197E-2D15";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/e57a64c2-2e55-4ebb-bf0e-211b087427f6"; }
+    ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+};
+}
