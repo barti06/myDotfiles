@@ -18,6 +18,22 @@
         "type": "github"
       }
     },
+    "headsetcontrol": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776698354,
+        "narHash": "sha256-l6nlC7eKV2omRDRvNUdH6+xScg5XOLzN7pk0tofr0rY=",
+        "owner": "Sapd",
+        "repo": "HeadsetControl",
+        "rev": "07311fa2f2b58976a2fe2e613aa6d81aa1b64cf3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sapd",
+        "repo": "HeadsetControl",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -103,6 +119,7 @@
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
+        "headsetcontrol": "headsetcontrol",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "nixpkgs": "nixpkgs",

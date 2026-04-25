@@ -9,6 +9,7 @@
             self.nixosModules.barti-pcDev
             self.nixosModules.barti-pcHome
             self.nixosModules.niri
+            self.nixosModules.headsetcontrol
         ];
 
         fonts.packages = with pkgs; [
@@ -94,6 +95,8 @@
             };
         };
 
+        hardware.ckb-next.enable = true;
+
         environment.systemPackages = with pkgs; [
             jq
             psmisc
@@ -115,6 +118,7 @@
             polkit_gnome
             p7zip
             unrar
+            pkgs.ckb-next
         ];
 
         nixpkgs.config.permittedInsecurePackages = [
