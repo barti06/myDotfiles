@@ -1,12 +1,18 @@
 return {
-  -- add gruvbox
+  -- add themes
   { "ellisonleao/gruvbox.nvim" },
+  { "lunarvim/darkplus.nvim",
+    lazy = false,
+    priority = 1000,  -- load before everything else
+    config = function()
+      vim.cmd("colorscheme darkplus")
+    end,
+  },
 
-  -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "darkplus",
     },
   },
 }

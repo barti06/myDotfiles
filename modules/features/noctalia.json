@@ -64,20 +64,21 @@
             "textColor": "none",
             "useFixedWidth": false,
             "visualizerType": "linear"
-          },
+          }
+        ],
+        "center": [
           {
             "colorizeIcons": false,
             "hideMode": "hidden",
             "id": "ActiveWindow",
-            "maxWidth": 145,
+            "maxWidth": 750,
             "scrollingMode": "hover",
-            "showIcon": true,
+            "showIcon": false,
             "showText": true,
             "textColor": "none",
             "useFixedWidth": false
           }
         ],
-        "center": [],
         "right": [
           {
             "id": "plugin:privacy-indicator"
@@ -88,6 +89,16 @@
             "id": "Volume",
             "middleClickCommand": "pwvucontrol || pavucontrol",
             "textColor": "none"
+          },
+          {
+            "defaultSettings": {
+              "customColor": "none",
+              "showConditionIcon": true,
+              "showTempUnit": true,
+              "showTempValue": true,
+              "tooltipOption": "everything"
+            },
+            "id": "plugin:weather-indicator"
           },
           {
             "clockColor": "none",
@@ -692,24 +703,24 @@
     },
     "desktopWidgetsEditMode": false,
     "display": {
-      "winit": {
+      "DP-2": {
+        "name": "DP-2",
         "connected": true,
-        "height": 1400,
-        "name": "winit",
-        "physical_height": 0,
-        "physical_width": 0,
-        "refresh_rate": 60000,
         "scale": 1,
-        "transform": "Flipped180",
-        "vrr_enabled": false,
-        "vrr_supported": false,
-        "width": 1276,
+        "width": 2560,
+        "height": 1440,
         "x": 0,
-        "y": 0
+        "y": 0,
+        "physical_width": 600,
+        "physical_height": 340,
+        "refresh_rate": 165003,
+        "vrr_supported": true,
+        "vrr_enabled": false,
+        "transform": "Normal"
       }
     },
     "notificationsState": {
-      "lastSeenTs": 1776900291000
+      "lastSeenTs": 1776985294000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.6"
@@ -2097,7 +2108,7 @@
           }
         }
       ],
-      "timestamp": 1776900143
+      "timestamp": 1777049993
     },
     "ui": {
       "settingsSidebarExpanded": true

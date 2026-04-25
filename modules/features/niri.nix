@@ -7,7 +7,7 @@
         };
     };
 
-    # note: i should stop using hyprlock and hyprpolkitagent and hyprshot but hyprslop feels soooooooo good :)
+    # note: i should stop using hyprlock and hyprshot but hyprslop feels soooooooo good :)
     perSystem = { pkgs, lib, self',... }: {
         packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
             inherit pkgs;
@@ -17,8 +17,11 @@
                     (lib.getExe self'.packages.myNoctalia)
                     (lib.getExe pkgs.kitty)
                     "gnome-keyring-daemon --start --components=secrets,pkcs11"
+                    "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"
                     (lib.getExe self'.packages.myHyprlock)
                 ];
+
+                gestures."hot-corners".off = {};
 
                 environment = {
                     XCURSOR_THEME = "macOS";
@@ -76,11 +79,11 @@
                     "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
                     "Mod+R".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call controlCenter toggle";
                     "Mod+Space".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
-                    
+
                     # screenshots
                     "Mod+Insert".spawn-sh = "${lib.getExe pkgs.hyprshot} -m region --clipboard-only";
                     "Mod+Shift+Insert".spawn-sh = "${lib.getExe pkgs.hyprshot} -m output --clipboard-only";
-                   
+
                     # window management
                     "Mod+C".close-window = {};
                     "Mod+V".toggle-window-floating = {};
@@ -99,10 +102,10 @@
                     "Mod+Down".focus-window-down = {};
 
                     # move windows
-                    "Mod+Shift+H".move-column-left = {};
-                    "Mod+Shift+L".move-column-right = {};
-                    "Mod+Shift+K".move-window-up = {};
-                    "Mod+Shift+J".move-window-down = {};
+                    "Mod+Shift+Left".move-column-left = {};
+                    "Mod+Shift+Right".move-column-right = {};
+                    "Mod+Shift+Up".move-window-up = {};
+                    "Mod+Shift+Down".move-window-down = {};
 
                     # Workspaces
                     "Mod+1".focus-workspace = 1;
@@ -126,8 +129,8 @@
                     "Mod+Shift+9".move-window-to-workspace = 9;
 
                     # scroll workspaces
-                    "Mod+WheelScrollDown".focus-workspace-down = {};
-                    "Mod+WheelScrollUp".focus-workspace-up = {};
+                    "Mod+WheelScrollDown".focus-column-right = {};
+                    "Mod+WheelScrollUp".focus-column-right = {};
 
                     # audio
                     "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+";
