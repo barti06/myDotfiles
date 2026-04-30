@@ -18,7 +18,7 @@
         home.packages = with pkgs; [
             kitty
             spotify
-            discord
+            vesktop
             kdePackages.okular
             nemo
             papirus-icon-theme
@@ -33,6 +33,11 @@
             yt-dlg
             ventoy-full
             qbittorrent
+            rofi
+            waybar
+            hyprpaper
+            hyprshot
+            niri
         ];
 
         home.pointerCursor = {
@@ -53,8 +58,8 @@
         xdg.desktopEntries.nemo = {
             name = "Nemo";
             genericName = "File Manager";
-            exec = "nemo %U";
-            icon = "/home/barti/Pictures/folder-icon.png"; 
+            exec = "${pkgs.nemo-with-extensions}/bin/nemo";
+            icon = "/home/barti/Pictures/folder-icon.png";
             terminal = false;
             categories = [ "Utility" "Core" "System" ];
             mimeType = [ "inode/directory" ];
@@ -63,16 +68,9 @@
             };
         };
 
-        xdg.mimeApps = {
-            enable = true;
-            defaultApplications = {
-            "inode/directory" = "nemo.desktop";
-            "application/x-gnome-saved-search" = "nemo.desktop";
-            };
-        };
-
         xdg.configFile."fastfetch/config.jsonc".source = ./fastfetch.jsonc;
-programs.git = {
+
+        programs.git = {
             enable = true;
             package = pkgs.gitFull;
             settings = {
@@ -137,6 +135,7 @@ programs.git = {
                 size = 12;
             };
             settings = {
+                background_opacity = "0.95";
                 # darkplus bg colors
                 background = "#1e1e1e";
                 foreground = "#d4d4d4";

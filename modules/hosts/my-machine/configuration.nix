@@ -8,7 +8,6 @@
             self.nixosModules.barti-pcGaming
             self.nixosModules.barti-pcDev
             self.nixosModules.barti-pcHome
-            self.nixosModules.niri
             self.nixosModules.headsetcontrol
         ];
 
@@ -18,16 +17,16 @@
 
         users.users.barti = {
             isNormalUser = true;
-            extraGroups = [ "wheel" "networkmanager" "audio" "video" "corectrl" ];
+            extraGroups = [ "wheel" "networkmanager" "audio" "video" "corectrl" "vboxusers" ];
             shell = pkgs.fish;
             packages = with pkgs; [
                 tree
             ];
         };
+        users.extraGroups.vboxusers.members = [ "barti" ];
 
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = true;
-        boot.kernelPackages = pkgs.linuxPackages_7_0;
 
         networking.hostName = "barti-pc";
         networking.networkmanager.enable = true;
@@ -42,6 +41,11 @@
             enable = true;
             extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
             config.common.default = "gtk";
+        };
+
+        xdg.mime.defaultApplications = {
+            "inode/directory" = [ "nemo.desktop" ];
+            "application/x-gnome-saved-search" = [ "nemo.desktop" ];
         };
 
         services.pipewire = {
@@ -72,9 +76,6 @@
         programs.corectrl.gpuOverclock.enable = true;
         boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
 
-        nix.settings.experimental-features = [ "nix-command" "flakes" ];
-        system.stateVersion = "26.05";
-
         fileSystems."/mnt/ssd-sata" = {
             device = "/dev/disk/by-uuid/6EACD427ACD3E79B";
             fsType = "ntfs-3g";
@@ -95,7 +96,20 @@
             };
         };
 
-        hardware.ckb-next.enable = true;
+        nixpkgs.config.permittedInsecurePackages = [
+            "ventoy-1.1.10"
+        ];
+
+        virtualisation.virtualbox = {
+            host = {
+                enable = true;
+                enableExtensionPack = true;
+            };
+            guest = {
+                enable = true;
+                dragAndDrop = true;
+            };
+        };
 
         environment.systemPackages = with pkgs; [
             jq
@@ -118,15 +132,11 @@
             polkit_gnome
             p7zip
             unrar
-            pkgs.ckb-next
+            easyeffects
+            btop
         ];
 
-        nixpkgs.config.permittedInsecurePackages = [
-            "ventoy-1.1.10"
-        ];
-
-        environment.sessionVariables = {
-            FILE_MANAGER = "nemo";
-        };
+        nix.settings.experimental-features = [ "nix-command" "flakes" ];
+        system.stateVersion = "26.05";
     };
 }

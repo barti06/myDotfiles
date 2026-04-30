@@ -1,0 +1,146 @@
+configuration {
+  modi: "drun,powermenu:~/.config/rofi/powermenu.sh";
+  show-icons: true;
+  sidebar-mode: true;
+  display-drun: "󰀻 Apps";
+  display-powermenu: "󰐥 Power";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+
+/* ROUNDED THEME FOR ROFI */
+/* Author: Newman Sanchez (https://github.com/newmanls) */
+/* modified a lot by myself */
+* {
+    bg0: #010101;
+    bg1: #010101;
+    bg2: #090909;
+
+    fg0: #ffffff;
+    fg1: #ffffff;
+    fg2: #a0a0a0;
+    fg3: #666666;
+
+    accent: #3569be;
+}
+
+* {
+    font:   "JetBrains Nerd 12";
+    background-color:   transparent;
+    text-color:         @fg0;
+    margin:     0px;
+    padding:    0px;
+    spacing:    0px;
+}
+
+window {
+    location:       north;
+    y-offset:       calc(50% - 176px);
+    width:          480;
+    border-radius:  12px;
+
+    border: 2px;
+    border-color: @accent;
+    background-color:   @bg1;
+}
+
+mainbox {
+    padding:    12px;
+}
+
+inputbar {
+    background-color:   @bg1;
+    border-color:       @accent;
+    border:         2px;
+    border-radius:  8px;
+    padding:    8px 16px;
+    spacing:    8px;
+    children:   [ prompt, entry ];
+}
+
+scrollbar {
+    handle-color:       @accent;
+    handle-width:       4px;
+    background-color:   @bg2;
+    border-radius:      4px;
+}
+
+prompt {
+    text-color: @accent;
+    font: "JetBrainsMono Nerd Font Bold 12";
+}
+
+entry {
+    placeholder:        "Search";
+    placeholder-color:  @fg3;
+    text-color: @fg1;
+}
+
+message {
+    margin:             12px 0 0;
+    border-radius:      8px;
+    border-color:       @bg1;
+    background-color:   @bg1;
+}
+
+textbox {
+    padding:    8px 24px;
+}
+
+listview {
+    background-color: @bg2;
+    margin:     12px 0 0;
+    lines:      8;
+    columns:    1;
+    fixed-height: true;
+}
+
+element {
+    padding:        8px 16px;
+    spacing:        8px;
+    border-radius:  8px;
+    background-color: transparent;
+    text-color: @fg0;
+}
+
+element normal normal, element alternate normal {
+    background-color:   transparent;
+    text-color:         @fg0;
+}
+
+element selected normal, element selected active {
+    background-color:   @accent;
+    text-color:         @bg0;
+}
+
+element-icon, element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+}
+
+sidebar {
+    border:             2px 0 0;
+    border-color:       @bg2;
+    background-color:   @bg1;
+    padding:            8px;
+    spacing:            8px;
+}
+
+button {
+    padding:        8px 16px;
+    border-radius:  0px;
+    text-color:     @fg2;
+    background-color: @bg2;
+    cursor:         pointer;
+}
+
+button selected {
+    background-color:   @bg1;
+    text-color:         @fg1;
+}

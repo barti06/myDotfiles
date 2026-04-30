@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-    
+{ self, inputs, ... }: 
+{ # THIS FILE IS UNUSED
     perSystem = { pkgs, lib, ... }: {
         packages.myHyprlock =
         let
@@ -21,7 +21,7 @@
 
                 background {
                     monitor =
-                    path = /home/barti/wallpapers/wallpaper1.png
+                    path = /home/barti/wallpapers/wallpaper6.jpg
                     blur_passes = 1
                 }
 
