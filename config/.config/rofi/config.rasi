@@ -1,6 +1,6 @@
 configuration {
   modi: "drun,powermenu:~/.config/rofi/powermenu.sh";
-  show-icons: true;
+  show-icons: false;
   sidebar-mode: true;
   display-drun: "󰀻 Apps";
   display-powermenu: "󰐥 Power";

@@ -1,13 +1,13 @@
 { self, inputs, ... }: {
 
-    flake.nixosModules.barti-pcConfiguration = { pkgs, lib, ... }: {
+    flake.nixosModules.bartiConfiguration = { pkgs, lib, ... }: {
 
         nixpkgs.config.allowUnfree = true;
         imports = [
-            self.nixosModules.barti-pcHardware
-            self.nixosModules.barti-pcGaming
-            self.nixosModules.barti-pcDev
-            self.nixosModules.barti-pcHome
+            self.nixosModules.bartiHardware
+            self.nixosModules.bartiGaming
+            self.nixosModules.bartiDev
+            self.nixosModules.bartiHome
             self.nixosModules.headsetcontrol
         ];
 
@@ -28,7 +28,7 @@
         boot.loader.systemd-boot.enable = true;
         boot.loader.efi.canTouchEfiVariables = true;
 
-        networking.hostName = "barti-pc";
+        networking.hostName = "barti";
         networking.networkmanager.enable = true;
         time.timeZone = "America/Buenos_Aires";
 
@@ -71,6 +71,7 @@
 
         programs.fish.enable = true;
         programs.firefox.enable = true;
+        programs.dconf.enable = true;
 
         programs.corectrl.enable = true;
         programs.corectrl.gpuOverclock.enable = true;
@@ -138,6 +139,6 @@
         ];
 
         nix.settings.experimental-features = [ "nix-command" "flakes" ];
-        system.stateVersion = "26.05";
+        system.stateVersion = "25.11";
     };
 }

@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.barti-pcHome = {
+    flake.nixosModules.bartiHome = {
         imports = [ inputs.home-manager.nixosModules.home-manager ];
         home-manager = {
             useGlobalPkgs = true;
@@ -13,7 +13,7 @@
     flake.homeModules.barti = { config, pkgs, ... }: {
         home.username = "barti";
         home.homeDirectory = "/home/barti";
-        home.stateVersion = "26.05";
+        home.stateVersion = "25.11";
 
         home.packages = with pkgs; [
             kitty
@@ -112,7 +112,7 @@
                 ls = "eza -la --icons --group-directories-first";
                 btw = "echo i use nixos, btw";
                 nef = "cd ~/cfg && nvim";
-                nrs = "sudo nixos-rebuild switch --flake ~/cfg#barti-pc";
+                nrs = "sudo nixos-rebuild switch --flake ~/cfg#barti";
             };
             functions = {
                 fish_prompt = ''

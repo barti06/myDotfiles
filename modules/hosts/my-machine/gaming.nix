@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.nixosModules.barti-pcGaming = { pkgs, ... }: {
+  flake.nixosModules.bartiGaming = { pkgs, ... }: {
     programs.steam = {
         enable = true;
         protontricks.enable = true;

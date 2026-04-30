@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-    flake.nixosModules.barti-pcDev = { pkgs, ... }: {
+    flake.nixosModules.bartiDev = { pkgs, ... }: {
         environment.systemPackages = with pkgs; [
         clang
         clang-tools

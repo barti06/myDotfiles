@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-flake.nixosModules.barti-pcHardware = { config, lib, pkgs, modulesPath, ... }: {
+flake.nixosModules.bartiHardware = { config, lib, pkgs, modulesPath, ... }: {
     imports =
 	[ (modulesPath + "/installer/scan/not-detected.nix")
         ];

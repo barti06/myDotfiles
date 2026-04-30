@@ -1,8 +1,7 @@
 { self, inputs, ... }: {
-    
-    flake.nixosConfigurations.barti-pc = inputs.nixpkgs.lib.nixosSystem {
+    flake.nixosConfigurations.barti = inputs.nixpkgs.lib.nixosSystem {
         modules = [
-            self.nixosModules.barti-pcConfiguration
+            self.nixosModules.bartiConfiguration
         ];
     };
 }
