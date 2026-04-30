@@ -16,10 +16,10 @@ else
         hyprctl dispatch exit >/dev/null 2>&1
         ;;
     *Reboot)
-        hyprshutdown -t 'Restarting...' -p 'reboot' >/dev/null 2>&1
+        reboot >/dev/null 2>&1
         ;;
     *Shutdown)
-        hyprshutdown -t 'Shutting down...' -p 'systemctl poweroff' >/dev/null 2>&1
+        systemctl poweroff >/dev/null 2>&1
         ;;
     esac
 fi
