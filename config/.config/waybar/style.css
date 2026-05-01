@@ -37,13 +37,13 @@ window#waybar {
 #network,
 #battery,
 #custom-notification {
-    padding: 0 14px;
+    padding: 0;
     margin: 5px 3px;
     border-radius: 20px;
     background-color: transparent;
     border: transparent;
     transition: all 0.2s ease;
-    color: @fg2;
+    color: @fg1;
 }
 
 #window:hover,
@@ -59,7 +59,7 @@ window#waybar {
 #custom-notification:hover {
     background-color: transparent;
     border-color: transparent;
-    color: @fg2;
+    color: @fg1;
 }
 
 #window { color: @fg1; }
@@ -119,10 +119,10 @@ window#waybar {
 
 /* workspaces */
 #workspaces {
-    padding: 0 4px;
+    padding: 0;
 }
 #workspaces button {
-    padding: 0 10px;
+    padding: 0 5px;
     color: @fg1;
     background: transparent;
     border: none;
@@ -150,8 +150,8 @@ window#waybar {
 
 /* notification center */
 #custom-notification {
-    color: @fg2;
+    color: @fg1;
 }
 #custom-notification:hover {
-    color: @fg1;
+    color: @accent;
 }

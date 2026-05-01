@@ -38,7 +38,12 @@
             hyprpaper
             hyprshot
             niri
+            swaynotificationcenter
         ];
+
+        services.swaync = {
+            enable = true;
+        };
 
         home.pointerCursor = {
             gtk.enable = true;
@@ -121,6 +126,8 @@
                 echo -n (prompt_pwd)
                 set_color green
                 echo " $git"
+                set_color normal
+                echo -n "[$USER] "
                 set_color magenta
                 echo -n "❯ "
                 set_color normal
@@ -132,42 +139,47 @@
             enable = true;
             font = {
                 name = "JetBrainsMono Nerd Font";
-                size = 12;
+                size = 20;
             };
             settings = {
-                background_opacity = "0.95";
-                # darkplus bg colors
-                background = "#1e1e1e";
-                foreground = "#d4d4d4";
-                cursor = "#d4d4d4";
-                selection_background  = "#264f78";
-                selection_foreground  = "#d4d4d4";
+                # background
+                background = "#000000";
+                foreground = "#e0e0e0";
+                cursor = "#ffffff";
+                selection_background = "#264f78";
+                selection_foreground = "#ffffff";
 
-                # black
-                color0 = "#1e1e1e";
-                color8 = "#808080";
+                # black (color0 gotta be lighter than the background to be visible)
+                color0 = "#2d2d2d";
+                color8 = "#5a5a5a";
+
                 # red
                 color1 = "#f44747";
                 color9 = "#f44747";
+
                 # green
                 color2 = "#608b4e";
                 color10 = "#608b4e";
-                # yellow (changes to orange)
+
+                # yellow / orange
                 color3 = "#ce9178";
                 color11 = "#ce9178";
+
                 # blue
                 color4 = "#569cd6";
                 color12 = "#569cd6";
+
                 # magenta
                 color5 = "#c678dd";
                 color13 = "#c678dd";
+
                 # cyan
                 color6 = "#4ec9b0";
                 color14 = "#4ec9b0";
+
                 # white
                 color7 = "#d4d4d4";
-                color15 = "#d4d4d4";
-            };
+                color15 = "#ffffff";            };
         };
 
         systemd.user.services.corectrl = {
