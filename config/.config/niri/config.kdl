@@ -4,7 +4,6 @@ spawn-at-startup "waybar"
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets,pkcs11"
 spawn-at-startup "easyeffects" "--gapplication-service"
 spawn-at-startup "/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1"
-spawn-at-startup "kitty"
 spawn-at-startup "xwayland-satellite"
 
 prefer-no-csd
@@ -12,6 +11,10 @@ gestures {
     hot-corners {
         off
     }
+}
+
+hotkey-overlay {
+    skip-at-startup
 }
 
 input {

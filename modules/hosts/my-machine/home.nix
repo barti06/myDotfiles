@@ -110,8 +110,6 @@
                 set -g __fish_git_prompt_char_stateseparator ""
                 set -g __fish_git_prompt_showdirtystate 1
                 set -g __fish_git_prompt_char_dirtystate "*"
-
-                fastfetch
             '';
             shellAliases = {
                 ls = "eza -la --icons --group-directories-first";
