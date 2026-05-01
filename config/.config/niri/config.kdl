@@ -63,6 +63,9 @@ window-rule {
     match is-active=true
     opacity 1.0
 }
+window-rule {
+    open-maximized true
+}
 
 binds {
     // apps
