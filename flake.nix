@@ -1,4 +1,6 @@
 {
+  description = "my nixos system configuration";
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -18,5 +20,17 @@
     };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
-}
+  outputs = { self, nixpkgs, ... }@inputs: {
+    # host name
+    nixosConfigurations."barti" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      # pass inputs to all modules
+      specialArgs = { inherit inputs; };
+
+      modules = [
+        ./modules/hosts/my-machine/configuration.nix
+        ./modules/hosts/my-machine/hardware.nix
+      ];
+    };
+  };}
