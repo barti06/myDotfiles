@@ -100,7 +100,7 @@
                 '';
                 interactiveShellInit = ''
                     set fish_greeting ""
-    
+
                     # git settings
                     set -g __fish_git_prompt_char_stateseparator ""
                     set -g __fish_git_prompt_showdirtystate 1
@@ -109,8 +109,8 @@
                 shellAliases = {
                     ls = "eza -la --icons --group-directories-first";
                     btw = "echo i use nixos, btw";
-                    nef = "cd ~/cfg && nvim";
-                    nrs = "sudo nixos-rebuild switch --flake ~/cfg#barti";
+                    "!edit" = "cd ~/cfg && nvim";
+                    "!rebuild" = "sudo nixos-rebuild switch --flake ~/cfg#barti";
                 };
                 functions = {
                     fish_prompt = ''

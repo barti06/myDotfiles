@@ -2,6 +2,7 @@
     nixpkgs.config.allowUnfree = true;
     imports = [
         ./hardware.nix
+        ./disks.nix
         ./dev.nix
         ./home.nix
         ./gaming.nix
@@ -73,13 +74,6 @@
     programs.corectrl.enable = true;
     programs.corectrl.gpuOverclock.enable = true;
     boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
-
-    # REMEMBER TO REMOVE THIS WHEN INSTALLING ON A NEW SYSTEM!
-    fileSystems."/mnt/ssd-sata" = {
-        device = "/dev/disk/by-uuid/6EACD427ACD3E79B";
-        fsType = "ntfs-3g";
-        options = [ "rw" "uid=1000" "gid=100" "umask=0022" ];
-    };
 
     systemd.user.services.polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
