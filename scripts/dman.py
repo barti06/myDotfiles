@@ -2,7 +2,7 @@ import sys
 import os
 from pathlib import Path
 
-def generate_disks(option, mount_point, uuid, fs_type):
+def generate_disks(option, mount_point="/mnt/disk", uuid="1234-5678", fs_type="ext4"):
     script_dir = Path(__file__).resolve().parent.parent
     nix_file = nix_file = script_dir / "modules/hosts/my-machine/disks.nix"
 
@@ -11,12 +11,6 @@ def generate_disks(option, mount_point, uuid, fs_type):
         options_str = '[ "rw" "uid=1000" "gid=100" "umask=0022" ]'
     else:
         options_str = '[ "defaults" ]'
-
-    # delete eveything option
-    if option in ["--delete", "-d"]:
-        content = f'''{{ ... }}:
-}}
-'''
 
     # replace / overwrite login
     if option in ["--replace", "-r"]:
@@ -61,7 +55,13 @@ def generate_disks(option, mount_point, uuid, fs_type):
         with open(nix_file, "w") as f:
             f.write(new_content)
         print(f">> added {mount_point} to disks.nix!")
-
+    # delete eveything option
+    elif option in ["--delete", "-d"]:
+        content = "{ ... }:\n{\n  fileSystems = { };\n}\n"
+        with open(nix_file, "w") as f:
+            f.write(content)
+        print(f">> wiped all fileSystems in {nix_file}")
+        return
     else:
         print(f"!! unknown option {option}")
 
