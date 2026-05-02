@@ -57,7 +57,7 @@ def generate_disks(option, mount_point="/mnt/disk", uuid="1234-5678", fs_type="e
         print(f">> added {mount_point} to disks.nix!")
     # delete eveything option
     elif option in ["--delete", "-d"]:
-        content = "{ ... }:\n{\n  fileSystems = { };\n}\n"
+        content = "{ ... }:\n{\n}\n"
         with open(nix_file, "w") as f:
             f.write(content)
         print(f">> wiped all fileSystems in {nix_file}")
