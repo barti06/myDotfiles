@@ -5,9 +5,9 @@
     "spacing": 18,
     "gtk-layer-shell": true,
 
-    "modules-left": ["niri/workspaces", "network", "memory", "cpu"],
+    "modules-left": ["niri/workspaces", "network", "memory", "cpu", "battery"],
     "modules-center": ["niri/window"],
-    "modules-right": ["battery", "group/audio", "custom/weather", "clock#date", "clock#time", "tray", "custom/notification"],
+    "modules-right": ["custom/headset_battery", "group/audio", "custom/weather", "clock#date", "clock#time", "tray", "custom/notification"],
 
     "group/audio": {
         "orientation": "horizontal",
@@ -15,6 +15,12 @@
             "pulseaudio",
             "pulseaudio#source"
         ]
+    },
+    "custom/headset_battery": {
+        "exec": "~/.config/waybar/headset_battery.sh",
+        "interval": 300,
+        "format": "{}",
+        "tooltip": false
     },
     // center module
     "niri/window": {

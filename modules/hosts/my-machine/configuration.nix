@@ -9,9 +9,14 @@
         ../../features/headset-control.nix
     ];
 
-    fonts.packages = with pkgs; [
-        nerd-fonts.jetbrains-mono
-    ];
+    fonts = {
+        packages = with pkgs; [
+            nerd-fonts.jetbrains-mono
+            noto-fonts-color-emoji
+            twemoji-color-font
+        ];
+    };
+
 
     users.users.barti = {
         isNormalUser = true;
