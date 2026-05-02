@@ -10,7 +10,7 @@ HARDWARE_FILE="$SCRIPT_DIR/../modules/hosts/my-machine/hardware.nix"
 
 # write the current system hardware to the hardware.nix file
 echo "writing hardware config..."
-sudo nixos-generate-config --show-hardware-config >"$HARDWARE_FILE"
+sudo nixos-generate-config --root /mnt --show-hardware-config >"$HARDWARE_FILE"
 echo "hardware config created successfully!"
 
 # add the file to git(might be pointless)
