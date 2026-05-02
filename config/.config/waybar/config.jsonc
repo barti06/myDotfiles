@@ -91,7 +91,8 @@
     },
     "custom/weather": {
         "exec": "~/.config/waybar/weather.sh",
-        "interval": 180,
+        "interval": 1800,
+        "return-type": "plain",
         "format": "{}",
         "tooltip": false
     },
