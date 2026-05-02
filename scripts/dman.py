@@ -12,6 +12,12 @@ def generate_disks(option, mount_point, uuid, fs_type):
     else:
         options_str = '[ "defaults" ]'
 
+    # delete eveything option
+    if option in ["--delete", "-d"]:
+        content = f'''{{ ... }}:
+}}
+'''
+
     # replace / overwrite login
     if option in ["--replace", "-r"]:
         content = f'''{{ ... }}:
@@ -63,6 +69,7 @@ if __name__ == "__main__":
     # show help menu
     if len(sys.argv) > 1 and sys.argv[1] in ["--help", "-h"]:
         print("usage: python generate-disks.py [OPTION] [MOUNT_POINT] [UUID] [FS_TYPE]")
+        print("  -d || --delete  : delete every file system from disks.nix")
         print("  -a || --append  : append disk to disks.nix")
         print("  -r || --replace : replace file with new disk config")
         sys.exit(0)
