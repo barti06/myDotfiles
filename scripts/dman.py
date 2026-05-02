@@ -74,13 +74,14 @@ if __name__ == "__main__":
         print("  -r || --replace : replace file with new disk config")
         sys.exit(0)
     # show second help menu when passing incorrect args
-    if not len(sys.argv) == 5:
-        print("usage: python generate-disks.py --'OPTION' /mnt/'MOUNT_FOLDER' UUID [fs_type]")
-    # call the function
-    else:
+    elif sys.argv[1] in ["--delete", "-d"]:
+        generate_disks(sys.argv[1]) # Just pass the option
+    elif len(sys.argv) == 5:
         generate_disks(
             sys.argv[1],
             sys.argv[2],
             sys.argv[3],
             sys.argv[4]
         )
+    else:
+        print("usage: python generate-disks.py --'OPTION' /mnt/'MOUNT_FOLDER' UUID [fs_type]")
