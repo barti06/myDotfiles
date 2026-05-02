@@ -74,6 +74,7 @@
     programs.corectrl.gpuOverclock.enable = true;
     boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
 
+    # REMEMBER TO REMOVE THIS WHEN INSTALLING ON A NEW SYSTEM!
     fileSystems."/mnt/ssd-sata" = {
         device = "/dev/disk/by-uuid/6EACD427ACD3E79B";
         fsType = "ntfs-3g";

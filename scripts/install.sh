@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
+set -e
 
-NIX_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-HOST="my-machine"
+# IMPORTANT: this script considers that you mounted nix on /mnt
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOST_NAME="barti"
+NIX_DIRECTORY="$SCRIPT_DIR/../"
+HARDWARE_FILE="$SCRIPT_DIR/../modules/hosts/my-machine/hardware.nix"
 
-echo ">> detecting hardware..."
+# write the current system hardware to the hardware.nix file
+echo "writing hardware config..."
+sudo nixos-generate-config --show-hardware-config >"$HARDWARE_FILE"
+echo "hardware config created successfully!"
 
-# direct the hardware-configuration.nix to the host folder
-if ! sudo nixos-generate-config --show-hardware-config | sudo tee "$NIX_DIR/modules/hosts/$HOST/hardware.nix" >/dev/null; then
-    echo "!! failed to generate hardware config :("
-    exit 1
-fi
+# add the file to git(might be pointless)
+echo "adding the hardware file to git..."
+git -C "$NIX_DIRECTORY" add "$HARDWARE_FILE"
+echo "added the hardware file to git!"
 
-echo ">>  initial rebuild..."
-# use boot instead of switch or the system would be turbo bombarded
-sudo nixos-rebuild boot --flake "$NIX_DIR#$HOST_NAME" --accept-flake-config
-
-echo ">> installation complete! reboot your system to log into your nixos environment!"
+# actually perform the install
+echo "installing nixos..."
+sudo nixos-install --root /mnt --flake "$NIX_DIRECTORY#$HOST_NAME"
+echo "nix install successful! reboot your system to boot to your new nixos!"
