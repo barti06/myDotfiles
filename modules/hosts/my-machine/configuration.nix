@@ -98,16 +98,16 @@
         "ventoy-1.1.10"
     ];
 
-    virtualisation.virtualbox = {
-        host = {
-            enable = true;
-            enableExtensionPack = true;
-        };
-        guest = {
-            enable = true;
-            dragAndDrop = true;
-        };
-    };
+    #virtualisation.virtualbox = {
+    #    host = {
+    #        enable = true;
+    #        enableExtensionPack = true;
+    #    };
+    #    guest = {
+    #        enable = true;
+    #        dragAndDrop = true;
+    #    };
+    #};
 
     environment.systemPackages = with pkgs; [
         xwayland-satellite
