@@ -75,7 +75,7 @@ if __name__ == "__main__":
         sys.exit(0)
     # show second help menu when passing incorrect args
     elif sys.argv[1] in ["--delete", "-d"]:
-        generate_disks(sys.argv[1]) # Just pass the option
+        generate_disks(sys.argv[1])
     elif len(sys.argv) == 5:
         generate_disks(
             sys.argv[1],
