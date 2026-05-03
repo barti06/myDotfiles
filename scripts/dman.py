@@ -73,8 +73,11 @@ if __name__ == "__main__":
         print("  -a || --append  : append disk to disks.nix")
         print("  -r || --replace : replace file with new disk config")
         sys.exit(0)
+    else:
+        print("usage: python generate-disks.py --'OPTION' /mnt/'MOUNT_FOLDER' UUID [fs_type]")
+
     # show second help menu when passing incorrect args
-    elif sys.argv[1] in ["--delete", "-d"]:
+    if sys.argv[1] in ["--delete", "-d"]:
         generate_disks(sys.argv[1])
     elif len(sys.argv) == 5:
         generate_disks(
@@ -83,5 +86,3 @@ if __name__ == "__main__":
             sys.argv[3],
             sys.argv[4]
         )
-    else:
-        print("usage: python generate-disks.py --'OPTION' /mnt/'MOUNT_FOLDER' UUID [fs_type]")

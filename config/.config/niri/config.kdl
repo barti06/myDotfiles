@@ -27,6 +27,8 @@ input {
         repeat-delay 250
     }
     mouse {
+        scroll-method "on-button-down"
+        scroll-button 274
         accel-profile "flat"
         accel-speed 0.0
     }

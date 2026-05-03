@@ -34,6 +34,7 @@
                 hyprshot
                 niri
                 swaynotificationcenter
+                gimp
             ];
 
             services.swaync = {

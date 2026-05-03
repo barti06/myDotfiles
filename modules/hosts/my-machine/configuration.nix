@@ -39,6 +39,7 @@
     services.gnome.gnome-keyring.enable = true;
     security.polkit.enable = true;
     services.flatpak.enable = true;
+    services.udisks2.enable = true;
 
     xdg.portal = {
         enable = true;
@@ -133,6 +134,7 @@
         unrar
         easyeffects
         btop
+        pkgs.xdg-utils
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
