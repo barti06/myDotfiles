@@ -117,11 +117,9 @@
                     fish_prompt = ''
                     set -l git (fish_git_prompt | string trim -c '() ')
                     set_color blue
-                    echo -n (prompt_pwd)
+                    echo -n "[$USER: "(prompt_pwd)"]"
                     set_color green
                     echo " $git"
-                    set_color normal
-                    echo -n "[$USER] "
                     set_color magenta
                     echo -n "❯ "
                     set_color normal

@@ -12,8 +12,12 @@
     fonts = {
         packages = with pkgs; [
             nerd-fonts.jetbrains-mono
+            dejavu_fonts
+            liberation_ttf
+            noto-fonts-cjk-sans
+            noto-fonts-cjk-serif
             noto-fonts-color-emoji
-            twemoji-color-font
+            ipafont
         ];
     };
 
