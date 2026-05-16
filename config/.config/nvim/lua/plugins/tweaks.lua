@@ -9,7 +9,7 @@ return {
             "clangd",
             "--background-index",
             "--header-insertion=never", -- stop automatic header insertion
-            "--fallback-style=none", -- no formatting
+            -- "--fallback-style=none", -- no formatting
             "--completion-style=detailed",
           },
         },
@@ -20,10 +20,10 @@ return {
           vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)
               if client and client.name == "clangd" then
-                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                -- local client = vim.lsp.get_client_by_id(args.data.client_id)
                 -- disable formatting capabilities
-                client.server_capabilities.documentFormattingProvider = false
-                client.server_capabilities.documentRangeFormattingProvider = false
+                -- client.server_capabilities.documentFormattingProvider = false
+                -- client.server_capabilities.documentRangeFormattingProvider = false
                 vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
               end
             end,
@@ -39,18 +39,23 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        c = {},
-        cpp = {},
-        objc = {},
-        objcpp = {},
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        objc = { "clang-format" },
+        objcpp = { "clang-format" },
+      },
+      formatters = {
+        ["clang-format"] = {
+          prepend_args = { "-style=file" },
+        },
       },
     },
   },
   {
     "mason-org/mason-lspconfig.nvim",
     opts = {
-    ensure_installed = {},
-    automatic_installation = false,
+      ensure_installed = {},
+      automatic_installation = false,
     },
   },
 }

@@ -25,15 +25,13 @@ return {
           vim.api.nvim_set_hl(0, "ColorColumn", black)
         end,
       })
-
-      vim.cmd("colorscheme darkplus")
     end,
   },
 
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "darkplus",
+      colorscheme = "gruvbox",
     },
   },
 }

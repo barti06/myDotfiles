@@ -13,7 +13,7 @@ else
         hyprlock >/dev/null 2>&1 &
         ;;
     *Logout)
-        hyprctl dispatch exit >/dev/null 2>&1
+        niri msg action quit --skip-confirmation
         ;;
     *Reboot)
         reboot >/dev/null 2>&1
